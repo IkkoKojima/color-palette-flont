@@ -81,7 +81,7 @@ export default function Result(imageUrl: string, palette: Color[], onClick: (e: 
                     className={classes.paletteArea}
                 >
                     {palette.map((color) => {
-                        const percent: string = (Math.round(color.percent * 100)).toString() + "%"
+                        const percent: string = (Math.floor(color.percent * 100)).toString() + "%"
                         const rgb: string = "#" + numberTo0xFF(color.rgb[0]) + numberTo0xFF(color.rgb[1]) + numberTo0xFF(color.rgb[2])
                         return (
                             <Tooltip placement="left" title={<div>クリックで<br />色をコピー</div>} arrow interactive className={classes.tooltip}>
