@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react'
-import { makeStyles, Theme, createStyles, Grid, Typography, Button, Input, TextField, Tooltip } from '@material-ui/core'
+import React from 'react'
+import { makeStyles, Theme, createStyles, Grid, Typography, Button, Tooltip } from '@material-ui/core'
 import ReplayIcon from '@material-ui/icons/Replay';
 import { Color } from './ColorPalette';
-import {numberTo0xFF,copyToClipboard} from './Util'
+import { numberTo0xFF, copyToClipboard } from './Util'
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -58,7 +58,7 @@ export default function Result(imageUrl: string, palette: Color[], onClick: (e: 
                     spacing={2}
                 >
                     <Grid item>
-                        <img className={classes.image} src={imageUrl} />
+                        <img className={classes.image} src={imageUrl} alt="選択された画像" />
                     </Grid>
                     <Grid item>
                         <Button
@@ -89,14 +89,14 @@ export default function Result(imageUrl: string, palette: Color[], onClick: (e: 
                                     className={classes.colorPalette}
                                     key={percent}
                                     style={{
-                                    backgroundColor: rgb,
-                                    height: percent,
-                                }}
+                                        backgroundColor: rgb,
+                                        height: percent,
+                                    }}
                                     onClick={(e: any) => (copyToClipboard(rgb))}
                                 >
-                                <Typography variant="caption">
-                                    {percent}  {rgb}
-                                </Typography>
+                                    <Typography variant="caption">
+                                        {percent}  {rgb}
+                                    </Typography>
                                 </Button>
                             </Tooltip>
                         )

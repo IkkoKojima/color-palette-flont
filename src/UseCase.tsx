@@ -27,14 +27,14 @@ export default function UseCase() {
         <Grid container justify="center" alignItems="center" className={classes.root}>
             <Grid item xs={3}>
                 <Typography variant="body2" align="center">お好みの画像を選択してください</Typography>
-                <img src={sampleImg} className={classes.image} />
+                <img src={sampleImg} className={classes.image} alt="サンプル画像" />
             </Grid>
             <Grid item xs={1}>
                 <ArrowForwardIcon className={classes.arrow} />
             </Grid>
             <Grid item xs={3}>
                 <Typography variant="body2" align="center">カラーパレットが自動生成されます</Typography>
-                <img src={samplePalette} className={classes.palette} />
+                <img src={samplePalette} className={classes.palette} alt="カラーパレット" />
             </Grid>
             <Grid item xs={1}>
                 <ArrowForwardIcon className={classes.arrow} />

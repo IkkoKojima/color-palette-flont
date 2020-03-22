@@ -1,4 +1,4 @@
-export function resizeImg (file:File, imageWidth:number, afterAction:(dataUriScheme:string)=>void) {
+export function resizeImg(file: File, imageWidth: number, afterAction: (dataUriScheme: string) => void) {
 
     var canvas = document.createElement("canvas")
     var ctx = canvas.getContext('2d')
@@ -8,10 +8,10 @@ export function resizeImg (file:File, imageWidth:number, afterAction:(dataUriSch
     canvas.height = 0
 
     image.src = URL.createObjectURL(file)
-    image.onload = ()=> {
+    image.onload = () => {
 
         var w = imageWidth
-        var h = image.height * (imageWidth/image.width)
+        var h = image.height * (imageWidth / image.width)
 
         canvas.width = w
         canvas.height = h

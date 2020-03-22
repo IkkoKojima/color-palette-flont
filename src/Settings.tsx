@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react'
-import { makeStyles, Theme, createStyles, Grid, Typography, Button, Input, TextField } from '@material-ui/core'
+import React from 'react'
+import { makeStyles, Theme, createStyles, Grid, Typography, Button, TextField } from '@material-ui/core'
 import PaletteIcon from '@material-ui/icons/Palette';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,7 +36,7 @@ export default function Settings(imageUrl: string, onClick: (e: any) => void, vi
                 className={classes.dropArea}
             >
                 <Grid item xs={8}>
-                        <img className={classes.image} src={imageUrl} />
+                    <img className={classes.image} src={imageUrl} alt="選択された画像" />
                 </Grid>
                 <Grid
                     item
