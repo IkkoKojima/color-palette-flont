@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         image: {
             width: "25vw",
-            maxHeight: "40vh"
+            maxHeight: "35vh"
         },
         button: {
             width: "25vw",
