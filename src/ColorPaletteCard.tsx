@@ -5,15 +5,14 @@ import { Color } from './ColorPalette';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: "100wh",
       maxHeight: "100vh",
     },
     media: {
-      height: "50vh",
+      height: "40vh",
     },
     content: {
       height: "40vh",
-    }
+    },
   }),
 );
 
@@ -26,6 +25,7 @@ export default function ColorPaletteCard(imgUrl: string, colors: Color[]) {
         image={imgUrl}
       />
       <CardContent className={classes.content}>
+        <Typography>画像から作られたカラーパレット</Typography>
         {colors.map((color) => {
           const percent: string = (color.percent * 100).toString() + "%"
           const rgb: string = "#" + numberTo0xFF(color.rgb[0]) + numberTo0xFF(color.rgb[1]) + numberTo0xFF(color.rgb[2])
