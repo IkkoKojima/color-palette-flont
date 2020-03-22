@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function Dropzone(onChange:(e:any)=>void) {
+export default function Dropzone(onChange:(e:any)=>void,visible:boolean) {
     const classes = useStyles()
     const onDrop = useCallback(acceptedFiles => {
         // Do something with the files
@@ -32,6 +32,7 @@ export default function Dropzone(onChange:(e:any)=>void) {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
     return (
+        !visible ? <div/> :
         <Grid
             container
             direction="column"
