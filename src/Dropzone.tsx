@@ -54,13 +54,6 @@ export default function Dropzone(onChange: (e: any) => void, visible: boolean) {
                         <Typography variant="h6">ファイルを選択</Typography>
                     </Button>
                 </Grid>
-                <Grid item xs={12}>
-                    {
-                        isDragActive ?
-                            <Typography variant="h6">ドロップできます</Typography> :
-                            <Typography variant="h6">またはここにファイルをドロップ</Typography>
-                    }
-                </Grid>
             </Grid >
     )
 }

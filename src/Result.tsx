@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme: Theme) =>
             maxHeight: "35vh"
         },
         button: {
-            width: "25vw",
+
             background: "#ffffff",
         },
         tooltip: {
             textSize: 30
         },
         colorPalette: {
-            width: "60vw",
+
             color: "white",
             "&:hover": {
                 color: "#FF0000"
@@ -37,71 +37,46 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function Result(imageUrl: string, palette: Color[], onClick: (e: any) => void, visible: boolean) {
+export default function Result(imageUrl: string, palette: Color[], onClick: (e: any) => void, visible: boolean, size: number | undefined) {
     const classes = useStyles()
     return (
         !visible ? <div /> :
-            <Grid
-                container
-                justify="center"
-                alignItems="center"
-                spacing={2}
-                className={classes.dropArea}
-            >
-                <Grid
-                    item
-                    xs={4}
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    spacing={2}
-                >
-                    <Grid item>
-                        <img className={classes.image} src={imageUrl} alt="選択された画像" />
-                    </Grid>
-                    <Grid item>
-                        <Button
-                            variant="outlined"
-                            className={classes.button}
-                            onClick={onClick}
-                        >
-                            <ReplayIcon />
-                            <Typography variant="h6">最初からやり直す</Typography>
-                        </Button>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    xs={8}
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    className={classes.paletteArea}
-                >
+            <div style={{
+                background: `url(${imageUrl}) center center no-repeat`,
+                backgroundSize: "cover",
+                width: size && (size < 1) ? "100vw" : `calc(75vh / ${size})`,
+                height: size && (size < 1) ? `calc(${size} * 100vw)` : "75vh",
+                maxHeight: "75vh",
+                maxWidth: "100vw",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <Grid container direction="column" justify="center" alignItems="center">
                     {palette.map((color) => {
                         const percent: string = (Math.floor(color.percent * 100)).toString() + "%"
                         const rgb: string = "#" + numberTo0xFF(color.rgb[0]) + numberTo0xFF(color.rgb[1]) + numberTo0xFF(color.rgb[2])
                         return (
-                            <Tooltip placement="left" title={<div>クリックで<br />色をコピー</div>} arrow interactive className={classes.tooltip}>
-                                <Button
-                                    className={classes.colorPalette}
-                                    key={percent}
-                                    style={{
-                                        backgroundColor: rgb,
-                                        height: percent,
-                                    }}
-                                    onClick={(e: any) => (copyToClipboard(rgb))}
-                                >
-                                    <Typography variant="caption">
-                                        {percent}  {rgb}
-                                    </Typography>
-                                </Button>
-                            </Tooltip>
+                            <Grid item>
+                                <Tooltip placement="left" title={<div>クリックで<br />色をコピー</div>} arrow interactive className={classes.tooltip}>
+                                    <Button
+                                        className={classes.colorPalette}
+                                        key={percent}
+                                        style={{
+                                            backgroundColor: rgb,
+                                            opacity: "0.9"
+                                        }}
+                                        onClick={(e: any) => (copyToClipboard(rgb))}
+                                    >
+                                        <Typography variant="body1" style={{ padding: "0 5vw 0" }}>
+                                            <strong>{percent}  {rgb}</strong>
+                                        </Typography>
+                                    </Button>
+                                </Tooltip>
+                            </Grid>
                         )
                     })}
                 </Grid>
-            </Grid >
+            </div>
     )
 }

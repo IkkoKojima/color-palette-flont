@@ -4,21 +4,23 @@ import PaletteIcon from '@material-ui/icons/Palette';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        dropArea: {
-            width: "95vw",
-            minHeight: "45vh",
-            margin: "10px 0px",
-            border: "5px solid gray",
-            boxSizing: "border-box",
-        },
         image: {
-            width: "63vw",
+            width: "60vw",
+            [theme.breakpoints.down('xs')]: {
+                width: "100vw"
+            }
         },
         textField: {
-            width: "25vw"
+            width: "30vw",
+            [theme.breakpoints.down('xs')]: {
+                width: "45vw"
+            }
         },
         button: {
-            width: "25vw",
+            width: "30vw",
+            [theme.breakpoints.down('xs')]: {
+                width: "45vw"
+            },
             background: "#ffffff",
         }
     }),
@@ -33,14 +35,14 @@ export default function Settings(imageUrl: string, onClick: (e: any) => void, vi
                 justify="center"
                 alignItems="center"
                 spacing={2}
-                className={classes.dropArea}
             >
-                <Grid item xs={8}>
+                <Grid item xs={12} sm={8}>
                     <img className={classes.image} src={imageUrl} alt="選択された画像" />
                 </Grid>
                 <Grid
                     item
-                    xs={4}
+                    xs={12}
+                    sm={4}
                     container
                     direction="column"
                     justify="center"
@@ -58,7 +60,7 @@ export default function Settings(imageUrl: string, onClick: (e: any) => void, vi
                             className={classes.textField}
                         />
                     </Grid>
-                    <Grid item>
+                    <Grid item >
                         <Button
                             variant="outlined"
                             className={classes.button}

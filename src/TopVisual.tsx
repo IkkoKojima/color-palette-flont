@@ -10,10 +10,10 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function TopVisual() {
+export default function TopVisual(handleClick: () => void) {
     const classes = useStyles()
     return (
-        <Grid container direction="column" justify="center" alignItems="center">
+        <Grid container direction="column" justify="center" alignItems="center" onClick={handleClick}>
             <Grid item>
                 <img src={logo} className={classes.image} alt="logo" />
             </Grid>

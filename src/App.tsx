@@ -16,11 +16,18 @@ function App() {
   const [url, setUrl] = useState<string>(defaultImage)
   const [mode, setMode] = useState<string>("input")
   const [image, setImage] = useState<File>()
+  const [size, setSize] = useState<number>()
 
   function handleChange(e: any) {
     const file: File = e.target.files[0]
     setImage(file)
     setUrl(window.URL.createObjectURL(file))
+    let img = new Image()
+    img.onload = function () {
+      console.log(img.naturalHeight / img.naturalWidth)
+      setSize(img.naturalHeight / img.naturalWidth)
+    }
+    img.src = window.URL.createObjectURL(file)
     setMode("setting")
   }
 
@@ -37,14 +44,15 @@ function App() {
   }
 
   return (
-    <Grid container direction="column" justify="center" alignItems="center">
-      {TopVisual()}
-      {Dropzone(handleChange, mode === "input")}
-      {Settings(url, handleClickSetting, mode === "setting")}
-      {Result(url, palette, handleClickResult, mode === "result")}
-      {UseCase()}
-      {Contact()}
-    </Grid>
+    <div>
+      <Grid container direction="column" justify="center" alignItems="center">
+        {TopVisual(() => { setMode("input") })}
+        {Dropzone(handleChange, mode === "input")}
+        {Settings(url, handleClickSetting, mode === "setting")}
+        {Result(url, palette, handleClickResult, mode === "result", size)}
+      </Grid>
+
+    </div>
   );
 }
 
