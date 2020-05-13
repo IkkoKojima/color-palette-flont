@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme: Theme) =>
             textSize: 30
         },
         colorPalette: {
-
             color: "white",
             "&:hover": {
                 color: "#FF0000"
@@ -69,7 +68,7 @@ export default function Result(imageUrl: string, palette: Color[], onClick: (e: 
                                         onClick={(e: any) => (copyToClipboard(rgb))}
                                     >
                                         <Typography variant="body1" style={{ padding: "0 5vw 0" }}>
-                                            <strong>{percent}  {rgb}</strong>
+                                            <strong>{rgb}</strong>
                                         </Typography>
                                     </Button>
                                 </Tooltip>
